@@ -1,0 +1,65 @@
+<html>
+<meta charset="utf-8">
+<style type="text/css">
+.node {
+	cursor: pointer;
+}
+
+.overlay {
+	background-color: #EEE;
+}
+
+.node circle {
+	fill: #fff;
+	stroke: steelblue;
+	stroke-width: 1.5px;
+}
+
+.node text {
+	font-size: 10px;
+	font-family: sans-serif;
+}
+
+.link {
+	fill: none;
+	stroke: #ccc;
+	stroke-width: 1.5px;
+}
+
+.templink {
+	fill: none;
+	stroke: red;
+	stroke-width: 3px;
+}
+
+.ghostCircle.show {
+	display: block;
+}
+
+.ghostCircle, .activeDrag .ghostCircle {
+	display: none;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="dntTree.js"></script>
+<body>
+	<div align="center">
+		<p align="center">Jenkins Interactive Chart</p>
+		<div align="right">
+			<form action="treeactionservlet" method="post">
+				<button name="treeactionservletaction" value="refresh">
+					<img
+						src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-8/32/Refresh-icon.png">
+				</button>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<button name="treeactionservletaction" value="download">
+					<img
+						src="http://icons.iconarchive.com/icons/designbolts/thin-download/32/Download-to-Drive-icon.png">
+				</button>
+			</form>
+		</div>
+	</div>
+	<div id="tree-container"></div>
+</body>
+</html>

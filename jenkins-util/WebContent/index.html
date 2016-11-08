@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Jenkins Util</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.css"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>Jenkins Util</h1>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Jenkins Details</h3>
+			</div>
+			<div class="panel-body">
+				<form data-toggle="validator" role="form" action="home"
+					method="post">
+					<div class="form-group">
+						<label> Jenkins User Id </label> <input type="text"
+							class="form-control" id="jUserId" name="jUserId"
+							placeholder="Jenkins Username" required>
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label> <input type="password"
+							class="form-control" id="jPassword" name="jPassword"
+							placeholder="Password" required>
+					</div>
+					<div class="form-group">
+						<label for="jobTypeLable"> Type
+							&#160;&#160;&#160;&#160;&#160; </label> <label class="radio-inline">
+							<input checked type="radio" name="type" id="dashboard"
+							value="dashboard">Dashboard
+						</label> <label class="radio-inline"> <input type="radio"
+							name="type" id="job" value="job">Job
+						</label>
+					</div>
+					<div class="form-group">
+						<label> Jenkins URL (Separated by comma) </label>
+						<textarea class="form-control" rows="6" id="urls" name="urls"
+							required></textarea>
+					</div>
+					<div class="form-group">
+						<label for="jobTypeLable"> Visualization Type
+							&#160;&#160;&#160;&#160;&#160; </label> <label class="radio-inline">
+							<input checked type="radio" name="vtype" id="excel" value="excel">Excel
+						</label> <label class="radio-inline"> <input type="radio"
+							name="vtype" id="tree" value="job">Tree
+						</label>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-success">Submit</button>
+						<button type="reset" class="btn btn-danger">Clear</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
