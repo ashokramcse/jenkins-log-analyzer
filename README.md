@@ -33,7 +33,7 @@ To provide a robust analyzer suite that will provide rapid analysis results on J
 
 ##Output
 ---
-![ScreenShot](Jenkins_Json_Skelton.jpg)
+![ScreenShot](https://cloud.githubusercontent.com/assets/23329036/20129941/74d6882e-a679-11e6-9b1e-4485ea566a97.png)
 
 ##Changes&Releases
 ---
