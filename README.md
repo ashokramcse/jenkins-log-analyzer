@@ -31,6 +31,10 @@ To provide a robust analyzer suite that will provide rapid analysis results on J
 5. Push to your forked repo `git push origin newbranch`
 6. Submit a pull request via `github.com`
 
+##Output
+---
+![ScreenShot](Jenkins_Json_Skelton.jpg)
+
 ##Changes&Releases
 ---
 ##V1.1
