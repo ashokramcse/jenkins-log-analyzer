@@ -8,23 +8,47 @@ import org.apache.commons.logging.LogFactory;
 import com.ashokram.jenkins.manager.JenkinsExcelManager;
 import com.ashokram.jenkins.pojo.ExcelTO;
 
-public class TreeActionServletHelper {
+/**
+ * The Class TreeActionServletHelper.
+ *
+ * @author Ashok Ram. G
+ * @since 1.1
+ */
+public class TreeActionServletHelper
+{
 
-    private static final Log log = LogFactory.getLog(TreeActionServletHelper.class);
+	/** The Constant log. */
+	private static final Log log = LogFactory.getLog(TreeActionServletHelper.class);
 
-    private HttpServletRequest request;
+	/** The request. */
+	private HttpServletRequest request;
 
-    public TreeActionServletHelper(HttpServletRequest request) {
-        this.request = request;
-    }
+	/**
+	 * Instantiates a new tree action servlet helper.
+	 *
+	 * @param request
+	 *            the request
+	 * @author Ashok Ram. G
+	 * @since 1.1
+	 */
+	public TreeActionServletHelper(HttpServletRequest request) {
+		this.request = request;
+	}
 
-    public ExcelTO getExcelTO() {
-        JenkinsExcelManager jenkinsExcelManager = new JenkinsExcelManager(request);
-        try {
-            return jenkinsExcelManager.getExcelTO();
-        } catch (Exception e) {
-            log.error("Error in getting Excel stream.", e);
-        }
-        return null;
-    }
+	/**
+	 * Gets the excel TO.
+	 *
+	 * @return the excel TO
+	 * @author Ashok Ram. G
+	 * @since 1.1
+	 */
+	public ExcelTO getExcelTO() {
+		JenkinsExcelManager jenkinsExcelManager = new JenkinsExcelManager(request);
+		try {
+			return jenkinsExcelManager.getExcelTO();
+		} catch (Exception e) {
+			log.error("Error in getting Excel stream.", e);
+		}
+		return null;
+	}
 }

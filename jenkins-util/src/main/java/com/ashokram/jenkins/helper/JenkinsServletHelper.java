@@ -17,71 +17,124 @@ import com.ashokram.jenkins.pojo.JsonDataTO;
 import com.ashokram.jenkins.pojo.ProcessDetailsTO;
 import com.google.gson.Gson;
 
-public class JenkinsServletHelper {
+/**
+ * The Class JenkinsServletHelper.
+ *
+ * @author Ashok Ram. G
+ * @since 1.0
+ */
+public class JenkinsServletHelper
+{
 
-    private static final Log log = LogFactory.getLog(JenkinsServletHelper.class);
+	/** The Constant log. */
+	private static final Log log = LogFactory.getLog(JenkinsServletHelper.class);
 
-    private HttpServletRequest request;
+	/** The request. */
+	private HttpServletRequest request;
 
-    public JenkinsServletHelper(HttpServletRequest request) {
-        this.request = request;
-    }
+	/**
+	 * Instantiates a new jenkins servlet helper.
+	 *
+	 * @param request
+	 *            the request
+	 */
+	public JenkinsServletHelper(HttpServletRequest request) {
+		this.request = request;
+	}
 
-    public Object processJenkins() throws Exception {
-        ProcessDetailsTO processDetailsTO = (ProcessDetailsTO) request.getAttribute("processDetailsTO");
-        JenkinsManager jenkinsManager = new JenkinsManager();
-        Map<String, Object> errorMap = validateJenkinsURL(processDetailsTO);
-        if (null != errorMap && errorMap.size() > 0) {
-            return errorMap;
-        }
-        for (String url : processDetailsTO.getUrls()) {
-            jenkinsManager.getJenkinsDetails(processDetailsTO.getJenkinsUserName(), processDetailsTO.getPassword(), url,
-                    processDetailsTO.getType());
-        }
-        if (processDetailsTO.getVisualizationType().equals("excel")) {
-            prepareExcel();
-            return "excel";
-        } else {
-            prepareJson();
-            return "json";
-        }
-    }
+	/**
+	 * Process jenkins.
+	 *
+	 * @return the object
+	 * @throws Exception
+	 *             the exception
+	 * @author Ashok Ram. G
+	 * @since 1.0
+	 */
+	public Object processJenkins() throws Exception {
+		ProcessDetailsTO processDetailsTO = (ProcessDetailsTO) request.getAttribute("processDetailsTO");
+		JenkinsManager jenkinsManager = new JenkinsManager();
+		Map<String, Object> errorMap = validateJenkinsURL(processDetailsTO);
+		if (null != errorMap && errorMap.size() > 0) {
+			return errorMap;
+		}
+		for (String url : processDetailsTO.getUrls()) {
+			jenkinsManager.getJenkinsDetails(processDetailsTO.getJenkinsUserName(), processDetailsTO.getPassword(), url, processDetailsTO.getType());
+		}
+		if (processDetailsTO.getVisualizationType().equals("excel")) {
+			prepareExcel();
+			return "excel";
+		} else {
+			prepareJson();
+			return "json";
+		}
+	}
 
-    private Map<String, Object> validateJenkinsURL(ProcessDetailsTO processDetailsTO) {
-        JenkinsManager jenkinsManager = new JenkinsManager();
-        Map<String, Object> errorMap = new HashMap<String, Object>();
-        for (String url : processDetailsTO.getUrls()) {
-            errorMap.putAll(jenkinsManager.validateAndProcess(processDetailsTO.getType(), url,
-                    processDetailsTO.getJenkinsUserName(), processDetailsTO.getPassword()));
-        }
-        return errorMap;
-    }
+	/**
+	 * Validate jenkins URL.
+	 *
+	 * @param processDetailsTO
+	 *            the process details TO
+	 * @return the map
+	 * @author Ashok Ram. G
+	 * @since 1.0
+	 */
+	private Map<String, Object> validateJenkinsURL(ProcessDetailsTO processDetailsTO) {
+		JenkinsManager jenkinsManager = new JenkinsManager();
+		Map<String, Object> errorMap = new HashMap<String, Object>();
+		for (String url : processDetailsTO.getUrls()) {
+			errorMap.putAll(jenkinsManager.validateAndProcess(processDetailsTO.getType(), url, processDetailsTO.getJenkinsUserName(), processDetailsTO.getPassword()));
+		}
+		return errorMap;
+	}
 
-    private void prepareJson() {
-        JenkinsManager jenkinsManager = new JenkinsManager();
-        JsonDataTO jsonDataTO = jenkinsManager.getJsonData();
-        String json = new Gson().toJson(jsonDataTO);
-        JsonBuilder jsonBuilder = new JsonBuilder();
-        json = jsonBuilder.cleanJson(json);
-        try {
-            writeJson(json);
-        } catch (Exception e) {
-            log.error("Error in writing json into file.", e);
-        }
-    }
+	/**
+	 * Prepare json.
+	 * 
+	 * @author Ashok Ram. G
+	 * @since 1.0
+	 */
+	private void prepareJson() {
+		JenkinsManager jenkinsManager = new JenkinsManager();
+		JsonDataTO jsonDataTO = jenkinsManager.getJsonData();
+		String json = new Gson().toJson(jsonDataTO);
+		JsonBuilder jsonBuilder = new JsonBuilder();
+		json = jsonBuilder.cleanJson(json);
+		try {
+			writeJson(json);
+		} catch (Exception e) {
+			log.error("Error in writing json into file.", e);
+		}
+	}
 
-    private void prepareExcel() {
-        JenkinsExcelManager excelManager = new JenkinsExcelManager(request);
-        try {
-            excelManager.writeExcelFile();
-        } catch (Exception e) {
-            log.error("Error in writing Excel file.", e);
-        }
-    }
+	/**
+	 * Prepare excel.
+	 * 
+	 * @author Ashok Ram. G
+	 * @since 1.0
+	 */
+	private void prepareExcel() {
+		JenkinsExcelManager excelManager = new JenkinsExcelManager(request);
+		try {
+			excelManager.writeExcelFile();
+		} catch (Exception e) {
+			log.error("Error in writing Excel file.", e);
+		}
+	}
 
-    private void writeJson(String json) throws Exception {
-        String path = this.request.getServletContext().getRealPath("WEB-INF/../");
-        FileUtils.writeStringToFile(new File(path.concat("testcase.json")), json);
-        Thread.sleep(60000);
-    }
+	/**
+	 * Write json.
+	 *
+	 * @param json
+	 *            the json
+	 * @throws Exception
+	 *             the exception
+	 * @author Ashok Ram. G
+	 * @since 1.0
+	 */
+	private void writeJson(String json) throws Exception {
+		String path = this.request.getServletContext().getRealPath("WEB-INF/../");
+		FileUtils.writeStringToFile(new File(path.concat("testcase.json")), json);
+		Thread.sleep(60000);
+	}
 }

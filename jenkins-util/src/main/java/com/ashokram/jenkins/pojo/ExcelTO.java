@@ -3,38 +3,94 @@ package com.ashokram.jenkins.pojo;
 import java.io.InputStream;
 import java.io.Serializable;
 
-public class ExcelTO implements Serializable {
+/**
+ * The Class ExcelTO.
+ *
+ * @author Ashok Ram. G
+ * @since 1.1
+ */
+public class ExcelTO implements Serializable
+{
 
-    private static final long serialVersionUID = 1L;
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 
-    private String fileName;
+	/** The file name. */
+	private String fileName;
 
-    private String fullName;
+	/** The full name. */
+	private String fullName;
 
-    private InputStream fileInputStream;
+	/** The file input stream. */
+	private InputStream fileInputStream;
 
-    public String getFullName() {
-        return fullName;
-    }
+	/**
+	 * Gets the full name.
+	 *
+	 * @return the full name
+	 * @author Ashok Ram. G
+	 * @since 1.1
+	 */
+	public String getFullName() {
+		return fullName;
+	}
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
+	/**
+	 * Sets the full name.
+	 *
+	 * @param fullName
+	 *            the new full name
+	 * @author Ashok Ram. G
+	 * @since 1.1
+	 */
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
 
-    public String getFileName() {
-        return fileName;
-    }
+	/**
+	 * Gets the file name.
+	 *
+	 * @return the file name
+	 * @author Ashok Ram. G
+	 * @since 1.1
+	 */
+	public String getFileName() {
+		return fileName;
+	}
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
+	/**
+	 * Sets the file name.
+	 *
+	 * @param fileName
+	 *            the new file name
+	 * @author Ashok Ram. G
+	 * @since 1.1
+	 */
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 
-    public InputStream getFileInputStream() {
-        return fileInputStream;
-    }
+	/**
+	 * Gets the file input stream.
+	 *
+	 * @return the file input stream
+	 * @author Ashok Ram. G
+	 * @since 1.1
+	 */
+	public InputStream getFileInputStream() {
+		return fileInputStream;
+	}
 
-    public void setFileInputStream(InputStream fileInputStream) {
-        this.fileInputStream = fileInputStream;
-    }
+	/**
+	 * Sets the file input stream.
+	 *
+	 * @param fileInputStream
+	 *            the new file input stream
+	 * @author Ashok Ram. G
+	 * @since 1.1
+	 */
+	public void setFileInputStream(InputStream fileInputStream) {
+		this.fileInputStream = fileInputStream;
+	}
 
 }

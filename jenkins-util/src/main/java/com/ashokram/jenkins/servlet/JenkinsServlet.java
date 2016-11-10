@@ -17,58 +17,84 @@ import com.ashokram.jenkins.aabstract.BaseHttpServlet;
 import com.ashokram.jenkins.helper.JenkinsServletHelper;
 
 /**
- * Servlet implementation class JenkinsServlet
+ * Servlet implementation class JenkinsServlet.
+ *
+ * @author Ashok Ram. G
+ * @since 1.0
  */
 @WebServlet("/jenkinsservlet")
-public class JenkinsServlet extends BaseHttpServlet {
+public class JenkinsServlet extends BaseHttpServlet
+{
 
-    private static final long serialVersionUID = 1L;
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 
-    private static final Log log = LogFactory.getLog(JenkinsServlet.class);
+	/** The Constant log. */
+	private static final Log log = LogFactory.getLog(JenkinsServlet.class);
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doProcess(request, response);
-    }
+	/**
+	 * Do get.
+	 *
+	 * @param request
+	 *            the request
+	 * @param response
+	 *            the response
+	 * @throws ServletException
+	 *             the servlet exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @author Ashok Ram. G
+	 * @since 1.0
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
+	}
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doProcess(request, response);
-    }
+	/**
+	 * Do post.
+	 *
+	 * @param request
+	 *            the request
+	 * @param response
+	 *            the response
+	 * @throws ServletException
+	 *             the servlet exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @author Ashok Ram. G
+	 * @since 1.0
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
+	}
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.altimetrik.jenkins.aabstract.BaseHttpServlet#doProcess(javax.servlet.http.HttpServletRequest,
-     * javax.servlet.http.HttpServletResponse)
-     */
-    @Override
-    protected void doProcess(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        JenkinsServletHelper jenkinsServletHelper = new JenkinsServletHelper(request);
-        try {
-            Object result = jenkinsServletHelper.processJenkins();
-            if (result instanceof Map) {
-                request.setAttribute("errorMap", result);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("errorservlet");
-                requestDispatcher.forward(request, response);
-            } else if (result instanceof String) {
-                if (String.valueOf(result).equalsIgnoreCase("excel")) {
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.ashokram.jenkins.aabstract.BaseHttpServlet#doProcess(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
+	@Override
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		JenkinsServletHelper jenkinsServletHelper = new JenkinsServletHelper(request);
+		try {
+			Object result = jenkinsServletHelper.processJenkins();
+			if (result instanceof Map) {
+				request.setAttribute("errorMap", result);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("errorservlet");
+				requestDispatcher.forward(request, response);
+			} else if (result instanceof String) {
+				if (String.valueOf(result).equalsIgnoreCase("excel")) {
 
-                } else if (String.valueOf(result).equalsIgnoreCase("json")) {
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("dntTreeOut.html");
-                    requestDispatcher.forward(request, response);
-                }
-            }
-        } catch (Exception e) {
-            log.error(e);
-        }
-    }
+				} else if (String.valueOf(result).equalsIgnoreCase("json")) {
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("dntTreeOut.html");
+					requestDispatcher.forward(request, response);
+				}
+			}
+		} catch (Exception e) {
+			log.error(e);
+		}
+	}
 
 }

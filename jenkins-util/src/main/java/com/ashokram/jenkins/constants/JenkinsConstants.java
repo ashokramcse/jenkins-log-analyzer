@@ -1,25 +1,51 @@
 package com.ashokram.jenkins.constants;
 
-public class JenkinsConstants {
-    public static final String DELIMITOR = "@_@";
+/**
+ * The Class JenkinsConstants.
+ *
+ * @author Ashok Ram. G
+ * @since 1.0
+ */
+public class JenkinsConstants
+{
 
-    public static final String ERROR_FILE_NAME = "error.properties";
+	/** The Constant DELIMITOR. */
+	public static final String DELIMITOR = "@_@";
 
-    public static final String DEFAULT_REASON = "OTHERS";
+	/** The Constant ERROR_FILE_NAME. */
+	public static final String ERROR_FILE_NAME = "error.properties";
 
-    public static final String JVM_CRASH = "JVMCrash";
+	/** The Constant DEFAULT_REASON. */
+	public static final String DEFAULT_REASON = "OTHERS";
 
-    public static final String DASHBOARD = "dashboard";
+	/** The Constant JVM_CRASH. */
+	public static final String JVM_CRASH = "JVMCrash";
 
-    public static final String JOB = "job";
+	/** The Constant DASHBOARD. */
+	public static final String DASHBOARD = "dashboard";
 
-    public static final String MASTER = "master";
+	/** The Constant JOB. */
+	public static final String JOB = "job";
 
-    public static final String FAILURE = "FAILURE!";
+	/** The Constant MASTER. */
+	public static final String MASTER = "master";
 
-    public static final String ERROR = "[ERROR]";
+	/** The Constant FAILURE. */
+	public static final String FAILURE = "FAILURE!";
 
-    public class JsonDataConstants {
-        public static final String ROOT_NODE_NAME = "Jenkins";
-    }
+	/** The Constant ERROR. */
+	public static final String ERROR = "[ERROR]";
+
+	/**
+	 * The Class JsonDataConstants.
+	 *
+	 * @author Ashok Ram. G
+	 * @since 1.0
+	 */
+	public class JsonDataConstants
+	{
+
+		/** The Constant ROOT_NODE_NAME. */
+		public static final String ROOT_NODE_NAME = "Jenkins";
+	}
 }
