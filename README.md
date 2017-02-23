@@ -1,5 +1,6 @@
-https://travis-ci.org/ashokramcse/jenkins-log-analyzer.svg?branch=master
 #Jenkins Log Analyzer
+
+[![Build Status](https://travis-ci.org/ashokramcse/jenkins-log-analyzer.svg?branch=master)](https://travis-ci.org/ashokramcse/jenkins-log-analyzer)
 
 ##Motivation
 ---
