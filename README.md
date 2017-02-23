@@ -1,3 +1,4 @@
+https://travis-ci.org/ashokramcse/jenkins-log-analyzer.svg?branch=master
 #Jenkins Log Analyzer
 
 ##Motivation
