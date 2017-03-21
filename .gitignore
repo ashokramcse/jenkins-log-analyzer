@@ -1,1 +1,10 @@
-/target/
+/target
+/logs
+.classpath
+.project
+.settings/
+/test-output
+/bin
+/target
+.idea
+log
